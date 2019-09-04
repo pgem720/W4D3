@@ -7,6 +7,17 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
+    <% if flash[:errors] %>
+  <ul>
+   <% flash[:errors].each do |error| %>
+   <li> <%= error %> </li>
+    
+   <% end %>
+  </ul>
+  <% end %>
+
+  <h1> <%= current_user ? current_user.username : "" %> </h1>
+    <input type="submit" value="<%= current_user ? 'logout' : 'login' %>">
 
   <body>
     <%= yield %>
